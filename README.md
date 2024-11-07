@@ -1,31 +1,53 @@
-# Publisher-Subscriber-System
+# Distributed Publisher-Subscriber System! 📬
 
-This project implements a distributed publisher-subscriber system designed to provide component decoupling, scalability, and real-time communication.
+This Java-based project enables real-time communication between multiple publishers and subscribers using a network of Brokers to handle message routing with flexibility and efficiency.
 
-## System Architecture
+## System Design
+- **Decoupled Architecture** <br>
+  The system decouples publishers and subscribers through a network of Brokers, allowing for asynchronous communication and reducing direct dependencies between components.
+- **Multi-Broker Synchronization** <br>
+  Brokers communicate with each other to ensure message consistency across the network, so subscribers can always receive relevant messages, regardless of which Broker they're connected to.
+- **Fault Tolerance & Scalability** <br>
+  Fault-tolerant mechanisms are in place to handle disconnections of publishers or subscribers, automatically removing related topics and subscriptions to maintain system consistency. Additionally, using a thread-per-client model ensures that each connection is handled independently, enhancing scalability.
+- **TCP Socket Communication** <br>
+  The system uses TCP sockets for reliable, connection-oriented communication between publishers, subscribers, and brokers. This design choice ensures that messages are reliably delivered and that real-time updates are consistently synchronized across all brokers.
 
-- Broker: Manages topics, subscriptions, and message delivery, ensuring that all Brokers in the network synchronize information.
-- Publisher: Responsible for creating topics and publishing messages to the system.
-- Subscriber: Subscribes to topics and receives real-time messages.
+## 📤 Publisher Functionality
+- **Create Topics**: Publishers can create new topics with unique identifiers, establishing channels for message distribution.
+- **Publish Messages**: Once a topic is created, publishers can broadcast messages to subscribers through the broker, ensuring that all interested subscribers receive real-time updates.
+- **Show Subscriber Count**: Publishers can check the number of subscribers for each topic to monitor engagement.
+- **Delete Topics**: Publishers can delete topics, and the system will automatically notify and remove subscriptions for those topics.
 
-## Key Features
-- Multi-Broker Communication: Broker nodes synchronize with each other to ensure all subscribers receive relevant messages.
-- Topic Management: Supports creating, deleting topics, and subscribing/unsubscribing to topics.
-- Fault Tolerance: Automatically removes topics and subscriptions when a publisher or subscriber disconnects to maintain consistency across the system.
+## 📥 Subscriber Functionality
+- **List Topics**: Subscribers can view all available topics and choose which ones to subscribe to.
+- **Subscribe to Topics**: Subscribers can subscribe to specific topics to receive all future messages posted to those topics.
+- **Receive Real-Time Messages**: Subscribers receive messages in real time as they are published, with the broker handling message forwarding and delivery.
+- **Unsubscribe from Topics**: Subscribers can choose to unsubscribe from topics and will receive a confirmation notification.
 
-## Getting Started
 
-**Starting the Broker**
-Run the following command to start the Broker and specify the necessary network port.
+## 💡 Getting Started
+Make sure you have JDK 21.0.3 installed. Then, follow these steps:
 
-```java -jar broker.jar <port>```
+1. Download the following files and place them in a folder:
+   - `broker.jar`
+   - `publisher.jar`
+   - `subscriber.jar`
 
-**Starting the Publisher**
-Run the following command to start the Publisher and connect it to a specified Broker.
+2. Navigate to the folder in your terminal:
+   ```bash
+   cd /path/to/your/folder
+   ```
+3. Start the Broker by specifying the port:
+   ```bash
+   java -jar broker.jar <port>
+   ```
+4. Start the Publisher and connect it to a Broker:
+   ```bash
+   java -jar publisher.jar <broker-ip> <broker-port>
+   ```
+5. Start the Subscriber and connect it to a Broker:
+   ```bash
+   java -jar subscriber.jar <broker-ip> <broker-port>
+   ```
 
-```java -jar publisher.jar <broker-ip> <broker-port>```
-
-**Starting the Subscriber**
-Run the following command to start the Subscriber and connect it to a specified Broker.
-
-```java -jar subscriber.jar <broker-ip> <broker-port>```
+Feel free to reach out with any questions or feedback.👋
