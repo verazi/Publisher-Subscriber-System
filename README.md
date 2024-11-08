@@ -13,16 +13,16 @@ This Java-based project enables real-time communication between multiple publish
   The system uses TCP sockets for reliable, connection-oriented communication between publishers, subscribers, and brokers. This design choice ensures that messages are reliably delivered and that real-time updates are consistently synchronized across all brokers.
 
 ## 📤 Publisher Functionality
-- **Create Topics**: Publishers can create new topics with unique identifiers, establishing channels for message distribution.
-- **Publish Messages**: Once a topic is created, publishers can broadcast messages to subscribers through the broker, ensuring that all interested subscribers receive real-time updates.
-- **Show Subscriber Count**: Publishers can check the number of subscribers for each topic to monitor engagement.
-- **Delete Topics**: Publishers can delete topics, and the system will automatically notify and remove subscriptions for those topics.
+- Create Topics
+- Publish Messages
+- Show Subscriber Count
+- Delete Topics
 
 ## 📥 Subscriber Functionality
-- **List Topics**: Subscribers can view all available topics and choose which ones to subscribe to.
-- **Subscribe to Topics**: Subscribers can subscribe to specific topics to receive all future messages posted to those topics.
-- **Receive Real-Time Messages**: Subscribers receive messages in real time as they are published, with the broker handling message forwarding and delivery.
-- **Unsubscribe from Topics**: Subscribers can choose to unsubscribe from topics and will receive a confirmation notification.
+- List Topics
+- Subscribe to Topics
+- Receive Real-Time Messages
+- Unsubscribe from Topics
 
 
 ## 💡 Getting Started
